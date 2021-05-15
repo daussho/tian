@@ -1,7 +1,7 @@
 import * as cheerio from "cheerio";
 import { API } from "./api";
 
-export class Novel {
+export class Client {
   private DOMAIN = "https://lnmtl.com/";
   private NOVEL_LIST_URL = `/novel`;
 
@@ -15,12 +15,17 @@ export class Novel {
     const $ = cheerio.load(html);
 
     const novelList = $("div.media").map((_i, novelHtml) => {
-      [categories, tags] = $(".list-inline.text-center", novelHtml).toArray();
+      const [categories, tags] = $(
+        ".list-inline.text-center",
+        novelHtml
+      ).toArray();
       return {
         title: $("h4.media-title", novelHtml).text(),
         image: $("img", novelHtml).attr("src"),
         author: $("span.label.label-primary", novelHtml).text(),
         desc: "",
+        categories: categories,
+        tags: tags,
       };
     });
 

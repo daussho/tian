@@ -1,3 +1,3 @@
-import { Novel } from "../src/novel";
+import { Client } from "../src/novel";
 
-new Novel().getNovelList("", "", "", 1);
+new Client().getNovelList("", "", "", 1);
