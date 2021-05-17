@@ -26,8 +26,8 @@ export class Client {
         image: $("img", novelHtml).attr("src"),
         author: $("span.label.label-primary", novelHtml).text(),
         desc: "",
-        categories: categories,
-        tags: tags,
+        categories: categories.toArray(),
+        tags: tags.toArray(),
       };
     });
 
